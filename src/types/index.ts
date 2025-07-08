@@ -1,4 +1,3 @@
-
 export interface User {
   id: string;
   name: string;
@@ -115,4 +114,51 @@ export interface Discussion {
   replies: Discussion[];
   createdAt: string;
   likes: number;
+}
+
+export interface AuthContextType {
+  user: User | null;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => Promise<void>;
+  register: (name: string, email: string, password: string, role: string) => Promise<void>;
+  isLoading: boolean;
+}
+
+export interface Database {
+  public: {
+    Tables: {
+      user_profiles: {
+        Row: {
+          id: string;
+          name: string;
+          role: 'admin' | 'teacher' | 'learner';
+          strand_points: number;
+          avatar_url?: string;
+          phone?: string;
+          grade?: string;
+          school?: string;
+          bio?: string;
+          earnings: number;
+          total_withdrawals: number;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+      };
+      subjects: {
+        Row: {
+          id: string;
+          name: string;
+          description?: string;
+          icon: string;
+          color: string;
+          slug: string;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+      };
+      // Add other table types as needed
+    };
+  };
 }
