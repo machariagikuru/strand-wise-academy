@@ -1,3 +1,4 @@
+
 export interface User {
   id: string;
   name: string;
@@ -84,6 +85,7 @@ export interface QuizAttempt {
   answers: Answer[];
   score: number;
   totalQuestions: number;
+  passed: boolean;
   timeSpent: number;
   completedAt: string;
 }
